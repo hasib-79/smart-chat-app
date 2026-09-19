@@ -11,14 +11,11 @@ import messageRoutes from './routes/message.routes.js'
 import importantUsersRoutes from './routes/importantUsers.routes.js'
 import summaryRoutes from './routes/summary.routes.js'
 import userRoutes from "./routes/user.routes.js"
-import path from 'path'
 
 dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
-
-const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
@@ -52,14 +49,6 @@ app.use('/api/messages', messageRoutes);
 app.use('/api/important-users', importantUsersRoutes);
 app.use('/api/summary', summaryRoutes);
 app.use("/api/users", userRoutes);
-
-if (process.env.NODE_ENV === 'production') {
-	app.use(express.static(path.join(__dirname, "../frontend/dist")));
-
-	app.get(/(.*)/, (req, res) => {
-		res.sendFile(path.join(__dirname, '../frontend', 'dist', 'index.html'));
-	})
-}
 
 const PORT = process.env.PORT || 5000;
 
