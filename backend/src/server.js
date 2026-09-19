@@ -20,13 +20,13 @@ const server = http.createServer(app);
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-	origin: process.env.NODE_ENV === 'development' ? 'http://localhost:5173' : process.env.FRONTEND_URL,
+	origin: process.env.NODE_ENV === 'development' ? 'http://localhost:5173' : `${process.env.FRONTEND_URL}`,
 	credentials: true
 }))
 
 export const io = new Server(server, {
 	cors: {
-		origin: process.env.NODE_ENV === 'development' ? 'http://localhost:5173' : process.env.FRONTEND_URL,
+		origin: process.env.NODE_ENV === 'development' ? 'http://localhost:5173' : `${process.env.FRONTEND_URL}`,
 		credentials: true
 	}
 })
