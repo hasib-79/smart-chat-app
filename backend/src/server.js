@@ -50,9 +50,6 @@ app.use('/api/important-users', importantUsersRoutes);
 app.use('/api/summary', summaryRoutes);
 app.use("/api/users", userRoutes);
 
-const PORT = process.env.PORT || 5000;
+connectDB();
 
-server.listen(PORT, () => {
-	console.log(`Server is running on port ${PORT}`);
-	connectDB();
-})
+export default server;
