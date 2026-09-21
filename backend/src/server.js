@@ -50,6 +50,6 @@ app.use('/api/important-users', importantUsersRoutes);
 app.use('/api/summary', summaryRoutes);
 app.use("/api/users", userRoutes);
 
-connectDB();
+await connectDB();
 
 export default server;
